@@ -1,8 +1,12 @@
 import com.google.gson.Gson
+import kotlinx.html.*
 import org.jetbrains.ktor.application.call
 import org.jsoup.Jsoup
 import org.jetbrains.ktor.host.embeddedServer
+import org.jetbrains.ktor.html.Template
+import org.jetbrains.ktor.html.respondHtmlTemplate
 import org.jetbrains.ktor.http.ContentType
+import org.jetbrains.ktor.http.HttpStatusCode
 import org.jetbrains.ktor.netty.Netty
 import org.jetbrains.ktor.response.respondText
 import org.jetbrains.ktor.routing.get
@@ -15,9 +19,7 @@ import org.jsoup.nodes.Document
 
 fun main(args: Array<String>) {
     val parser=NineGagParser()
-    val posts=parser.getPosts(10)
-    parser.getPosts(10,posts.paging)
-
+    println("Server Start!")
     embeddedServer(Netty, 8080) {
         routing {
             get("/{section}/{nextPageId}") {
@@ -28,6 +30,12 @@ fun main(args: Array<String>) {
                 call.respondText("Hello, world!, ${section} and ${id}   $json", ContentType.Text.Html)
             }
 
+            get("/"){
+                call.respondHtmlTemplate(Home(), HttpStatusCode.OK){
+
+                }
+            }
+
             get("/{section}"){
                 val section=call.parameters["section"]
                 val request=parser.getPosts(10);
@@ -36,7 +44,6 @@ fun main(args: Array<String>) {
             }
         }
     }.start(wait = true)
-    println("Server Start!")
 }
 
 class NineGagParser {
@@ -74,3 +81,35 @@ class NineGagParser {
 data class GagRequest(val status:Int,val message:String, val data: List<Gag>, val paging: String)
 
 data class Gag(val id:String,val caption:String,val images:HashMap<String,String>)
+
+
+class Home : Template<HTML> {
+
+    override fun HTML.apply() {
+        head{
+            title("HelloWorld!")
+        }
+
+        body{
+            div {
+                +"Hello World!!!!!!"
+            }
+
+            div{
+                id="react-app"
+            }
+
+            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js")
+            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js")
+
+            script{
+                unsafe {
+                    +""" var rootElement = React.createElement("div", {}, React.createElement('h1', {}, "Contacts"))
+
+                    ReactDOM.render(rootElement, document.getElementById('react-app'))"""
+                }
+            }
+        }
+    }
+
+}
