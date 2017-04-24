@@ -1,9 +1,7 @@
 import com.google.gson.Gson
-import kotlinx.html.*
 import org.jetbrains.ktor.application.call
 import org.jsoup.Jsoup
 import org.jetbrains.ktor.host.embeddedServer
-import org.jetbrains.ktor.html.Template
 import org.jetbrains.ktor.html.respondHtmlTemplate
 import org.jetbrains.ktor.http.ContentType
 import org.jetbrains.ktor.http.HttpStatusCode
@@ -31,7 +29,7 @@ fun main(args: Array<String>) {
             }
 
             get("/"){
-                call.respondHtmlTemplate(Home(), HttpStatusCode.OK){
+                call.respondHtmlTemplate(IndexPage(), HttpStatusCode.OK){
 
                 }
             }
@@ -82,34 +80,3 @@ data class GagRequest(val status:Int,val message:String, val data: List<Gag>, va
 
 data class Gag(val id:String,val caption:String,val images:HashMap<String,String>)
 
-
-class Home : Template<HTML> {
-
-    override fun HTML.apply() {
-        head{
-            title("HelloWorld!")
-        }
-
-        body{
-            div {
-                +"Hello World!!!!!!"
-            }
-
-            div{
-                id="react-app"
-            }
-
-            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js")
-            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js")
-
-            script{
-                unsafe {
-                    +""" var rootElement = React.createElement("div", {}, React.createElement('h1', {}, "Contacts"))
-
-                    ReactDOM.render(rootElement, document.getElementById('react-app'))"""
-                }
-            }
-        }
-    }
-
-}
