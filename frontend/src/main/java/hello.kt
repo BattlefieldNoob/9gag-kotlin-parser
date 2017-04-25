@@ -1,9 +1,7 @@
+
 import kotlinx.html.div
 import kotlinx.html.h1
-import react.ReactComponent
-import react.ReactComponentNoProps
-import react.ReactComponentNoState
-import react.ReactElement
+import react.*
 import react.dom.ReactDOM
 import react.dom.ReactDOMBuilder
 import react.dom.ReactDOMComponent
@@ -17,11 +15,22 @@ import kotlin.browser.document
 
 fun main(args: Array<String>) {
     ReactDOM.render(document.getElementById("react-app")){
-        HelloWorld()
+        div {
+            HelloWorld {}
+        }
     }
 }
 
 class HelloWorld : ReactDOMComponent<ReactComponentNoProps,ReactComponentNoState>(){
+    companion object : ReactComponentSpec<HelloWorld, ReactComponentNoProps, ReactComponentNoState>
+
+    init {
+        state= ReactComponentNoState()
+    }
+
+    override fun componentDidMount() {
+        super.componentDidMount()
+    }
 
     override fun ReactDOMBuilder.render() {
         div{
