@@ -45,9 +45,6 @@
                         <goals>
                             <goal>js</goal>
                         </goals>
-                        <configuration>
-                            <moduleKind>amd</moduleKind>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

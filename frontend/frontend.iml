@@ -10,7 +10,7 @@
             </option>
             <option name="k2jsCompilerArguments">
               <K2JSCompilerArguments>
-                <option name="moduleKind" value="amd" />
+                <option name="moduleKind" value="plain" />
               </K2JSCompilerArguments>
             </option>
             <option name="k2jvmCompilerArguments">
