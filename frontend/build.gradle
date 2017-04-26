@@ -1,23 +1,48 @@
-apply plugin: 'java'
-apply plugin: 'maven'
 
 group = 'groupId'
+
+apply plugin: 'kotlin2js'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
 version = '1.0-SNAPSHOT'
 
-description = """"""
-
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
-
-
-
 repositories {
-        
+    jcenter()
      maven { url "https://dl.bintray.com/kotlin/ktor" }
      maven { url "https://jcenter.bintray.com" }
      maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-js', version:'1.1.1'
-    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-html-js', version:'LATEST'
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-html-js', version:'0.6.2'
+    compile "org.jetbrains.kotlin:kotlin-test-js:1.1.1"
+
 }
+
+sourceSets {
+    main.kotlin.srcDirs += "src"
+    main.resources.srcDirs += "resources"
+    main.output.resourcesDir = "build/js/resources"
+    test.kotlin.srcDirs += "test"
+    test.resources.srcDirs += "testResources"
+}
+
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$parent.projectDir/public/${project.name}.js"
+    kotlinOptions.moduleKind = 'plain'
+}
+
+task copykotlin(type: Copy) {
+    from file(buildDir.path+"/node_modules/kotlin/kotlin.js")
+//    into sourceSets.main.output.resourcesDir
+    into file("$parent.projectDir/public/")
+}
+
+task copykotlinhtmljs(type: Copy) {
+    from file(buildDir.path+"/node_modules/kotlin-html-js/kotlin-html-js.js")
+//    into sourceSets.main.output.resourcesDir
+    into file("$parent.projectDir/public/")
+}
+

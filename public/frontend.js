@@ -1,8 +1,13 @@
-define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (_, Kotlin, $module$kotlinx_html_js, $module$react) {
+if (typeof kotlin === 'undefined') {
+  throw new Error("Error loading module 'frontend'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'frontend'.");
+}
+if (typeof this['kotlinx-html-js'] === 'undefined') {
+  throw new Error("Error loading module 'frontend'. Its dependency 'kotlinx-html-js' was not found. Please, check whether 'kotlinx-html-js' is loaded prior to 'frontend'.");
+}
+var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
   'use strict';
-  var get_js = Kotlin.kotlin.js.get_js_1yb8b7$;
-  var div = $module$kotlinx_html_js.kotlinx.html.div_59el9d$;
-  var h1 = $module$kotlinx_html_js.kotlinx.html.h1_vmej1w$;
+  var ReadWriteProperty = Kotlin.kotlin.properties.ReadWriteProperty;
+  var ReadOnlyProperty = Kotlin.kotlin.properties.ReadOnlyProperty;
   var listOf = Kotlin.kotlin.collections.listOf_i5x0yv$;
   var to = Kotlin.kotlin.to_ujzrz7$;
   var toMap = Kotlin.kotlin.collections.toMap_6hr0sd$;
@@ -11,153 +16,111 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
   var Unsafe = $module$kotlinx_html_js.kotlinx.html.Unsafe;
   var IllegalStateException = Kotlin.kotlin.IllegalStateException;
   var TagConsumer = $module$kotlinx_html_js.kotlinx.html.TagConsumer;
-  var Annotation = Kotlin.kotlin.Annotation;
+  var RuntimeException = Kotlin.kotlin.RuntimeException;
+  var get_js = Kotlin.kotlin.js.get_js_1yb8b7$;
+  var HashMap_init = Kotlin.kotlin.collections.HashMap_init_q3lmfv$;
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
+  var Annotation = Kotlin.kotlin.Annotation;
   var last = Kotlin.kotlin.collections.last_2p1efm$;
   var get_lastIndex = Kotlin.kotlin.collections.get_lastIndex_55thoc$;
-  var RuntimeException = Kotlin.kotlin.RuntimeException;
-  var HashMap_init = Kotlin.kotlin.collections.HashMap_init_q3lmfv$;
-  var ReadWriteProperty = Kotlin.kotlin.properties.ReadWriteProperty;
-  var ReadOnlyProperty = Kotlin.kotlin.properties.ReadOnlyProperty;
   var filterNotNull = Kotlin.kotlin.collections.filterNotNull_m3lr2h$;
   var Iterable = Kotlin.kotlin.collections.Iterable;
   var filterNotNull_0 = Kotlin.kotlin.collections.filterNotNull_emfgvx$;
   var listOf_1 = Kotlin.kotlin.collections.listOf_mh5how$;
+  var div = $module$kotlinx_html_js.kotlinx.html.div_59el9d$;
+  var h1 = $module$kotlinx_html_js.kotlinx.html.h1_vmej1w$;
+  BaseReactExtensionReadWriteProperty.prototype = Object.create(BaseReactExtension.prototype);
+  BaseReactExtensionReadWriteProperty.prototype.constructor = BaseReactExtensionReadWriteProperty;
+  BaseReactExtensionReadOnlyProperty.prototype = Object.create(BaseReactExtension.prototype);
+  BaseReactExtensionReadOnlyProperty.prototype.constructor = BaseReactExtensionReadOnlyProperty;
   ReactDOMComponent.prototype = Object.create(ReactComponent.prototype);
   ReactDOMComponent.prototype.constructor = ReactDOMComponent;
-  HelloWorld.prototype = Object.create(ReactDOMComponent.prototype);
-  HelloWorld.prototype.constructor = HelloWorld;
-  DOMProps.prototype = Object.create(RProps.prototype);
-  DOMProps.prototype.constructor = DOMProps;
-  ReactDOMBuilder$DOMNode.prototype = Object.create(ReactBuilder$Node.prototype);
-  ReactDOMBuilder$DOMNode.prototype.constructor = ReactDOMBuilder$DOMNode;
-  ReactDOMBuilder.prototype = Object.create(ReactBuilder.prototype);
-  ReactDOMBuilder.prototype.constructor = ReactDOMBuilder;
   ReactDOMStatelessComponent.prototype = Object.create(ReactDOMComponent.prototype);
   ReactDOMStatelessComponent.prototype.constructor = ReactDOMStatelessComponent;
   ReactDOMPropslessComponent.prototype = Object.create(ReactDOMComponent.prototype);
   ReactDOMPropslessComponent.prototype.constructor = ReactDOMPropslessComponent;
   ReactDOMStaticComponent.prototype = Object.create(ReactDOMComponent.prototype);
   ReactDOMStaticComponent.prototype.constructor = ReactDOMStaticComponent;
+  DOMProps.prototype = Object.create(RProps.prototype);
+  DOMProps.prototype.constructor = DOMProps;
+  ReactDOMBuilder$DOMNode.prototype = Object.create(ReactBuilder$Node.prototype);
+  ReactDOMBuilder$DOMNode.prototype.constructor = ReactDOMBuilder$DOMNode;
+  ReactDOMBuilder.prototype = Object.create(ReactBuilder.prototype);
+  ReactDOMBuilder.prototype.constructor = ReactDOMBuilder;
   ReactComponentNoProps.prototype = Object.create(RProps.prototype);
   ReactComponentNoProps.prototype.constructor = ReactComponentNoProps;
   ReactComponentEmptyProps.prototype = Object.create(RProps.prototype);
   ReactComponentEmptyProps.prototype.constructor = ReactComponentEmptyProps;
-  BaseReactExtensionReadWriteProperty.prototype = Object.create(BaseReactExtension.prototype);
-  BaseReactExtensionReadWriteProperty.prototype.constructor = BaseReactExtensionReadWriteProperty;
-  BaseReactExtensionReadOnlyProperty.prototype = Object.create(BaseReactExtension.prototype);
-  BaseReactExtensionReadOnlyProperty.prototype.constructor = BaseReactExtensionReadOnlyProperty;
-  function jsObject$lambda(closure$builder) {
-    return function ($receiver) {
-      closure$builder($receiver);
-    };
+  HelloWorld.prototype = Object.create(ReactDOMComponent.prototype);
+  HelloWorld.prototype.constructor = HelloWorld;
+  function ReactComponentLifecycleListener() {
   }
-  var jsObject = Kotlin.defineInlineFunction('frontend.runtime.wrappers.jsObject_7qq44f$', function (builder) {
-    var obj = {};
-    builder(obj);
-    return obj;
-  });
-  var js_0 = Kotlin.defineInlineFunction('frontend.runtime.wrappers.js_5ij4lk$', function (builder) {
-    var obj = {};
-    builder(obj);
-    return obj;
-  });
-  function getOwnPropertyNames($receiver) {
-    var me = $receiver;
-    return Object.getOwnPropertyNames(me);
-  }
-  function toPlainObjectStripNull(me) {
-    var tmp$_0;
-    var obj = {};
-    var $receiver = getOwnPropertyNames(me);
-    var destination_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$();
-    var tmp$_1;
-    for (tmp$_1 = 0; tmp$_1 !== $receiver.length; ++tmp$_1) {
-      var element = $receiver[tmp$_1];
-      if (!(Kotlin.equals(element, '__proto__') || Kotlin.equals(element, 'constructor'))) {
-        destination_0.add_11rb$(element);
-      }
-    }
-    tmp$_0 = destination_0.iterator();
-    while (tmp$_0.hasNext()) {
-      var p = tmp$_0.next();
-      if (me[p] != null) {
-        obj[p] = me[p];
-      }
-    }
-    return obj;
-  }
-  function jsstyle(builder) {
-    var obj = {};
-    builder(obj);
-    return obj;
-  }
-  function get_inputValue($receiver) {
-    var tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-    return (tmp$_5 = (tmp$_4 = (tmp$_1 = Kotlin.isType(tmp$_0 = $receiver.target, HTMLInputElement) ? tmp$_0 : null) != null ? tmp$_1.value : null) != null ? tmp$_4 : (tmp$_3 = Kotlin.isType(tmp$_2 = $receiver.target, HTMLTextAreaElement) ? tmp$_2 : null) != null ? tmp$_3.value : null) != null ? tmp$_5 : '';
-  }
-  function createInstance($receiver) {
-    var ctor = get_js($receiver);
-    return new ctor();
-  }
-  function main$lambda$lambda$lambda($receiver) {
-  }
-  function main$lambda$lambda(this$) {
-    return function ($receiver) {
-      var $this = this$;
-      HelloWorld$Companion_getInstance();
-      var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(ReactComponentNoProps));
-      $this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(HelloWorld)), props, ReactBuilder$invoke$lambda_0(props, main$lambda$lambda$lambda));
-    };
-  }
-  function main$lambda($receiver) {
-    div($receiver, void 0, main$lambda$lambda($receiver));
-  }
-  function main(args) {
-    render(ReactDOM, document.getElementById('react-app'), main$lambda);
-  }
-  function HelloWorld() {
-    HelloWorld$Companion_getInstance();
-    ReactDOMComponent.call(this);
-    this.state = new ReactComponentNoState();
-  }
-  function HelloWorld$Companion() {
-    HelloWorld$Companion_instance = this;
-  }
-  HelloWorld$Companion.$metadata$ = {
-    kind: Kotlin.Kind.OBJECT,
-    simpleName: 'Companion',
-    interfaces: [ReactComponentSpec]
+  ReactComponentLifecycleListener.$metadata$ = {
+    kind: Kotlin.Kind.INTERFACE,
+    simpleName: 'ReactComponentLifecycleListener',
+    interfaces: []
   };
-  var HelloWorld$Companion_instance = null;
-  function HelloWorld$Companion_getInstance() {
-    if (HelloWorld$Companion_instance === null) {
-      new HelloWorld$Companion();
-    }
-    return HelloWorld$Companion_instance;
+  function ReactExtensionProvider() {
   }
-  HelloWorld.prototype.componentDidMount = function () {
-    ReactDOMComponent.prototype.componentDidMount.call(this);
+  ReactExtensionProvider.$metadata$ = {
+    kind: Kotlin.Kind.INTERFACE,
+    simpleName: 'ReactExtensionProvider',
+    interfaces: []
   };
-  function HelloWorld$render$lambda$lambda($receiver) {
-    $receiver.unaryPlus_pdl1vz$('Hello World By Kotlin Javascript!');
+  function BaseReactExtension(provider) {
+    this.provider = provider;
+    this.listener_h5e3yy$_0 = new BaseReactExtension$listener$ObjectLiteral(this);
+    this.provider.subscribe_jthzip$(this.listener_h5e3yy$_0);
   }
-  function HelloWorld$render$lambda($receiver) {
-    h1($receiver, void 0, HelloWorld$render$lambda$lambda);
-  }
-  HelloWorld.prototype.render_vhjzqq$ = function ($receiver) {
-    for (var i = 1; i <= 3; i++) {
-      div($receiver, void 0, HelloWorld$render$lambda);
-    }
+  BaseReactExtension.prototype.componentWillUpdate = function () {
   };
-  HelloWorld.$metadata$ = {
+  BaseReactExtension.prototype.componentWillUnmount = function () {
+  };
+  BaseReactExtension.prototype.componentWillMount = function () {
+  };
+  BaseReactExtension.prototype.componentDidMount = function () {
+  };
+  function BaseReactExtension$listener$ObjectLiteral(this$BaseReactExtension) {
+    this.this$BaseReactExtension = this$BaseReactExtension;
+  }
+  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillUpdate = function () {
+    this.this$BaseReactExtension.componentWillUpdate();
+  };
+  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillUnmount = function () {
+    this.this$BaseReactExtension.provider.unsubsctibe_jthzip$(this);
+    this.this$BaseReactExtension.componentWillUnmount();
+  };
+  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillMount = function () {
+    this.this$BaseReactExtension.componentWillMount();
+  };
+  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentDidMount = function () {
+    this.this$BaseReactExtension.componentDidMount();
+  };
+  BaseReactExtension$listener$ObjectLiteral.$metadata$ = {
     kind: Kotlin.Kind.CLASS,
-    simpleName: 'HelloWorld',
-    interfaces: [ReactDOMComponent]
+    interfaces: [ReactComponentLifecycleListener]
   };
-  function render($receiver, container, handler) {
-    $receiver.render(buildElement(handler), container);
+  BaseReactExtension.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'BaseReactExtension',
+    interfaces: []
+  };
+  function BaseReactExtensionReadWriteProperty(provider) {
+    BaseReactExtension.call(this, provider);
   }
+  BaseReactExtensionReadWriteProperty.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'BaseReactExtensionReadWriteProperty',
+    interfaces: [ReadWriteProperty, BaseReactExtension]
+  };
+  function BaseReactExtensionReadOnlyProperty(provider) {
+    BaseReactExtension.call(this, provider);
+  }
+  BaseReactExtensionReadOnlyProperty.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'BaseReactExtensionReadOnlyProperty',
+    interfaces: [ReadOnlyProperty, BaseReactExtension]
+  };
   var events;
   var eventMap;
   function fixAttributeName(event) {
@@ -183,6 +146,59 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
   function set_value($receiver, newValue) {
     attributeStringString.set_fid0sb$($receiver, 'value', newValue);
   }
+  function render($receiver, container, handler) {
+    $receiver.render(buildElement(handler), container);
+  }
+  function ReactDOMComponent() {
+    ReactComponent.call(this);
+  }
+  ReactDOMComponent.prototype.children_u0k4lg$ = function ($receiver) {
+    $receiver.children.addAll_brywnq$(ReactWrapper_getInstance().normalize_s8jyv4$(this.props.children));
+  };
+  Object.defineProperty(ReactDOMComponent.prototype, 'DOMNode', {
+    get: function () {
+      return ReactDOM.findDOMNode(this);
+    }
+  });
+  function ReactDOMComponent$render$lambda(this$ReactDOMComponent) {
+    return function ($receiver) {
+      this$ReactDOMComponent.render_vhjzqq$($receiver);
+    };
+  }
+  ReactDOMComponent.prototype.render = function () {
+    return buildElement(ReactDOMComponent$render$lambda(this));
+  };
+  ReactDOMComponent.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactDOMComponent',
+    interfaces: [ReactComponent]
+  };
+  function ReactDOMStatelessComponent() {
+    ReactDOMComponent.call(this);
+    this.state = new ReactComponentNoState();
+  }
+  ReactDOMStatelessComponent.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactDOMStatelessComponent',
+    interfaces: [ReactDOMComponent]
+  };
+  function ReactDOMPropslessComponent() {
+    ReactDOMComponent.call(this);
+  }
+  ReactDOMPropslessComponent.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactDOMPropslessComponent',
+    interfaces: [ReactDOMComponent]
+  };
+  function ReactDOMStaticComponent() {
+    ReactDOMComponent.call(this);
+    this.state = new ReactComponentNoState();
+  }
+  ReactDOMStaticComponent.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactDOMStaticComponent',
+    interfaces: [ReactDOMComponent]
+  };
   function InnerHTML(__html) {
     this.__html = __html;
   }
@@ -298,208 +314,6 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
     handler($receiver);
     return $receiver.finalize();
   }
-  function ReactDOMComponent() {
-    ReactComponent.call(this);
-  }
-  ReactDOMComponent.prototype.children_u0k4lg$ = function ($receiver) {
-    $receiver.children.addAll_brywnq$(ReactWrapper_getInstance().normalize_s8jyv4$(this.props.children));
-  };
-  Object.defineProperty(ReactDOMComponent.prototype, 'DOMNode', {
-    get: function () {
-      return ReactDOM.findDOMNode(this);
-    }
-  });
-  function ReactDOMComponent$render$lambda(this$ReactDOMComponent) {
-    return function ($receiver) {
-      this$ReactDOMComponent.render_vhjzqq$($receiver);
-    };
-  }
-  ReactDOMComponent.prototype.render = function () {
-    return buildElement(ReactDOMComponent$render$lambda(this));
-  };
-  ReactDOMComponent.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactDOMComponent',
-    interfaces: [ReactComponent]
-  };
-  function ReactDOMStatelessComponent() {
-    ReactDOMComponent.call(this);
-    this.state = new ReactComponentNoState();
-  }
-  ReactDOMStatelessComponent.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactDOMStatelessComponent',
-    interfaces: [ReactDOMComponent]
-  };
-  function ReactDOMPropslessComponent() {
-    ReactDOMComponent.call(this);
-  }
-  ReactDOMPropslessComponent.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactDOMPropslessComponent',
-    interfaces: [ReactDOMComponent]
-  };
-  function ReactDOMStaticComponent() {
-    ReactDOMComponent.call(this);
-    this.state = new ReactComponentNoState();
-  }
-  ReactDOMStaticComponent.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactDOMStaticComponent',
-    interfaces: [ReactDOMComponent]
-  };
-  function ReactComponentNoState() {
-  }
-  ReactComponentNoState.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactComponentNoState',
-    interfaces: []
-  };
-  function ReactComponentNoProps() {
-    RProps.call(this);
-  }
-  ReactComponentNoProps.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactComponentNoProps',
-    interfaces: [RProps]
-  };
-  function ReactComponentEmptyProps() {
-    RProps.call(this);
-  }
-  ReactComponentEmptyProps.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactComponentEmptyProps',
-    interfaces: [RProps]
-  };
-  function ReactDsl() {
-  }
-  ReactDsl.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactDsl',
-    interfaces: [Annotation]
-  };
-  function ReactBuilder() {
-    this.path = Kotlin.kotlin.collections.ArrayList_init_ww73n8$();
-    this.lastLeaved_u0k4lr$_0 = null;
-  }
-  function ReactBuilder$Node(type, props) {
-    this.type = type;
-    this.props = props;
-    this.children = ArrayList_init();
-  }
-  Object.defineProperty(ReactBuilder$Node.prototype, 'realType', {
-    get: function () {
-      return this.type;
-    }
-  });
-  ReactBuilder$Node.prototype.create = function () {
-    return ReactWrapper_getInstance().createRaw_139a74$(this.realType, this.props, this.children);
-  };
-  ReactBuilder$Node.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'Node',
-    interfaces: []
-  };
-  Object.defineProperty(ReactBuilder.prototype, 'children', {
-    get: function () {
-      return this.currentNode().children;
-    }
-  });
-  ReactBuilder.prototype.currentNode = function () {
-    return last(this.path);
-  };
-  ReactBuilder.prototype.currentNodeOfType_rku8s3$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.currentNodeOfType_rku8s3$', function (currentNodeOfType$T_0, isT) {
-    var tmp$_0;
-    return isT(tmp$_0 = this.currentNode()) ? tmp$_0 : Kotlin.throwCCE();
-  });
-  ReactBuilder.prototype.enterNode_88i3q1$ = function (node) {
-    if (this.path.isEmpty() && this.lastLeaved_u0k4lr$_0 != null) {
-      console.error('React only allows single element be returned from render() function');
-    }
-    this.path.add_11rb$(node);
-  };
-  ReactBuilder.prototype.exitCurrentNode = function () {
-    var node = this.path.removeAt_za3lpa$(get_lastIndex(this.path));
-    var element = node.create();
-    if (!this.path.isEmpty()) {
-      this.children.add_11rb$(element);
-    }
-    this.lastLeaved_u0k4lr$_0 = element;
-    return element;
-  };
-  ReactBuilder.prototype.createReactNode_qfhe8e$ = function (type, props) {
-    return new ReactBuilder$Node(type, props);
-  };
-  ReactBuilder.prototype.enterReactNode_uztyw4$ = function (type, props, handler) {
-    this.enterNode_88i3q1$(this.createReactNode_qfhe8e$(type, props));
-    handler(this);
-    return this.exitCurrentNode();
-  };
-  ReactBuilder.prototype.instantiateProps_xu0bud$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.instantiateProps_xu0bud$', function (instantiateProps$P_0, isP) {
-    return _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(instantiateProps$P_0));
-  });
-  function ReactBuilder$invoke$lambda($receiver) {
-  }
-  function ReactBuilder$invoke$lambda_0(closure$props, closure$handler) {
-    return function ($receiver) {
-      closure$handler(closure$props);
-    };
-  }
-  ReactBuilder.prototype.invoke_rb3dp$_0 = function (invoke$T_0, isT, invoke$P_0, isP, $receiver, handler) {
-    if (handler === void 0)
-      handler = ReactBuilder$invoke$lambda;
-    var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(invoke$P_0));
-    var handler_0 = ReactBuilder$invoke$lambda_0(props, handler);
-    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(invoke$T_0)), props, handler_0);
-  };
-  function ReactBuilder$invoke$lambda_1($receiver) {
-  }
-  function ReactBuilder$invoke$lambda_2(closure$props, closure$handler) {
-    return function ($receiver) {
-      closure$handler(closure$props);
-    };
-  }
-  ReactBuilder.prototype.invoke_i56iuw$_0 = function (invoke$T_1, isT, invoke$P_1, isP, $receiver, props, handler) {
-    if (handler === void 0)
-      handler = ReactBuilder$invoke$lambda_1;
-    var handler_0 = ReactBuilder$invoke$lambda_2(props, handler);
-    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(invoke$T_1)), props, handler_0);
-  };
-  function ReactBuilder$node$lambda($receiver) {
-  }
-  ReactBuilder.prototype.node_g12n31$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.node_g12n31$', function (node$T_0, isT, node$P_0, isP, $receiver, props, handler) {
-    if (handler === void 0)
-      handler = _.react.ReactBuilder.node$f;
-    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(node$T_0)), props, handler);
-  });
-  function ReactBuilder$invoke$lambda_3($receiver) {
-  }
-  function ReactBuilder$invoke$lambda_4(closure$props, closure$handler) {
-    return function ($receiver) {
-      closure$handler(closure$props);
-    };
-  }
-  ReactBuilder.prototype.invoke_ahipwd$_0 = function (invoke$P_2, isP, $receiver, handler) {
-    if (handler === void 0)
-      handler = ReactBuilder$invoke$lambda_3;
-    var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(invoke$P_2));
-    return this.enterReactNode_uztyw4$($receiver.ref, props, ReactBuilder$invoke$lambda_4(props, handler));
-  };
-  function ReactBuilder$node$lambda_0($receiver) {
-  }
-  ReactBuilder.prototype.node_arc5mv$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.node_arc5mv$', function (node$P_1, isP, $receiver, props, handler) {
-    if (handler === void 0)
-      handler = _.react.ReactBuilder.node$f_0;
-    return this.enterReactNode_uztyw4$($receiver.ref, props, handler);
-  });
-  ReactBuilder.prototype.result = function () {
-    return this.lastLeaved_u0k4lr$_0;
-  };
-  ReactBuilder.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'ReactBuilder',
-    interfaces: []
-  };
   function RProps() {
     this.key = null;
     this.children = null;
@@ -720,74 +534,6 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
     simpleName: 'ReactComponentWrapper',
     interfaces: []
   };
-  function ReactComponentLifecycleListener() {
-  }
-  ReactComponentLifecycleListener.$metadata$ = {
-    kind: Kotlin.Kind.INTERFACE,
-    simpleName: 'ReactComponentLifecycleListener',
-    interfaces: []
-  };
-  function ReactExtensionProvider() {
-  }
-  ReactExtensionProvider.$metadata$ = {
-    kind: Kotlin.Kind.INTERFACE,
-    simpleName: 'ReactExtensionProvider',
-    interfaces: []
-  };
-  function BaseReactExtension(provider) {
-    this.provider = provider;
-    this.listener_h5e3yy$_0 = new BaseReactExtension$listener$ObjectLiteral(this);
-    this.provider.subscribe_jthzip$(this.listener_h5e3yy$_0);
-  }
-  BaseReactExtension.prototype.componentWillUpdate = function () {
-  };
-  BaseReactExtension.prototype.componentWillUnmount = function () {
-  };
-  BaseReactExtension.prototype.componentWillMount = function () {
-  };
-  BaseReactExtension.prototype.componentDidMount = function () {
-  };
-  function BaseReactExtension$listener$ObjectLiteral(this$BaseReactExtension) {
-    this.this$BaseReactExtension = this$BaseReactExtension;
-  }
-  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillUpdate = function () {
-    this.this$BaseReactExtension.componentWillUpdate();
-  };
-  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillUnmount = function () {
-    this.this$BaseReactExtension.provider.unsubsctibe_jthzip$(this);
-    this.this$BaseReactExtension.componentWillUnmount();
-  };
-  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentWillMount = function () {
-    this.this$BaseReactExtension.componentWillMount();
-  };
-  BaseReactExtension$listener$ObjectLiteral.prototype.reactComponentDidMount = function () {
-    this.this$BaseReactExtension.componentDidMount();
-  };
-  BaseReactExtension$listener$ObjectLiteral.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    interfaces: [ReactComponentLifecycleListener]
-  };
-  BaseReactExtension.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'BaseReactExtension',
-    interfaces: []
-  };
-  function BaseReactExtensionReadWriteProperty(provider) {
-    BaseReactExtension.call(this, provider);
-  }
-  BaseReactExtensionReadWriteProperty.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'BaseReactExtensionReadWriteProperty',
-    interfaces: [ReadWriteProperty, BaseReactExtension]
-  };
-  function BaseReactExtensionReadOnlyProperty(provider) {
-    BaseReactExtension.call(this, provider);
-  }
-  BaseReactExtensionReadOnlyProperty.$metadata$ = {
-    kind: Kotlin.Kind.CLASS,
-    simpleName: 'BaseReactExtensionReadOnlyProperty',
-    interfaces: [ReadOnlyProperty, BaseReactExtension]
-  };
   function ReactExternalComponentSpec(ref) {
     this.ref = ref;
   }
@@ -795,6 +541,158 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
     kind: Kotlin.Kind.CLASS,
     simpleName: 'ReactExternalComponentSpec',
     interfaces: []
+  };
+  function ReactDsl() {
+  }
+  ReactDsl.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactDsl',
+    interfaces: [Annotation]
+  };
+  function ReactBuilder() {
+    this.path = Kotlin.kotlin.collections.ArrayList_init_ww73n8$();
+    this.lastLeaved_u0k4lr$_0 = null;
+  }
+  function ReactBuilder$Node(type, props) {
+    this.type = type;
+    this.props = props;
+    this.children = ArrayList_init();
+  }
+  Object.defineProperty(ReactBuilder$Node.prototype, 'realType', {
+    get: function () {
+      return this.type;
+    }
+  });
+  ReactBuilder$Node.prototype.create = function () {
+    return ReactWrapper_getInstance().createRaw_139a74$(this.realType, this.props, this.children);
+  };
+  ReactBuilder$Node.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'Node',
+    interfaces: []
+  };
+  Object.defineProperty(ReactBuilder.prototype, 'children', {
+    get: function () {
+      return this.currentNode().children;
+    }
+  });
+  ReactBuilder.prototype.currentNode = function () {
+    return last(this.path);
+  };
+  ReactBuilder.prototype.currentNodeOfType_rku8s3$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.currentNodeOfType_rku8s3$', function (currentNodeOfType$T_0, isT) {
+    var tmp$_0;
+    return isT(tmp$_0 = this.currentNode()) ? tmp$_0 : Kotlin.throwCCE();
+  });
+  ReactBuilder.prototype.enterNode_88i3q1$ = function (node) {
+    if (this.path.isEmpty() && this.lastLeaved_u0k4lr$_0 != null) {
+      console.error('React only allows single element be returned from render() function');
+    }
+    this.path.add_11rb$(node);
+  };
+  ReactBuilder.prototype.exitCurrentNode = function () {
+    var node = this.path.removeAt_za3lpa$(get_lastIndex(this.path));
+    var element = node.create();
+    if (!this.path.isEmpty()) {
+      this.children.add_11rb$(element);
+    }
+    this.lastLeaved_u0k4lr$_0 = element;
+    return element;
+  };
+  ReactBuilder.prototype.createReactNode_qfhe8e$ = function (type, props) {
+    return new ReactBuilder$Node(type, props);
+  };
+  ReactBuilder.prototype.enterReactNode_uztyw4$ = function (type, props, handler) {
+    this.enterNode_88i3q1$(this.createReactNode_qfhe8e$(type, props));
+    handler(this);
+    return this.exitCurrentNode();
+  };
+  ReactBuilder.prototype.instantiateProps_xu0bud$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.instantiateProps_xu0bud$', function (instantiateProps$P_0, isP) {
+    return _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(instantiateProps$P_0));
+  });
+  function ReactBuilder$invoke$lambda($receiver) {
+  }
+  function ReactBuilder$invoke$lambda_0(closure$props, closure$handler) {
+    return function ($receiver) {
+      closure$handler(closure$props);
+    };
+  }
+  ReactBuilder.prototype.invoke_rb3dp$_0 = function (invoke$T_0, isT, invoke$P_0, isP, $receiver, handler) {
+    if (handler === void 0)
+      handler = ReactBuilder$invoke$lambda;
+    var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(invoke$P_0));
+    var handler_0 = ReactBuilder$invoke$lambda_0(props, handler);
+    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(invoke$T_0)), props, handler_0);
+  };
+  function ReactBuilder$invoke$lambda_1($receiver) {
+  }
+  function ReactBuilder$invoke$lambda_2(closure$props, closure$handler) {
+    return function ($receiver) {
+      closure$handler(closure$props);
+    };
+  }
+  ReactBuilder.prototype.invoke_i56iuw$_0 = function (invoke$T_1, isT, invoke$P_1, isP, $receiver, props, handler) {
+    if (handler === void 0)
+      handler = ReactBuilder$invoke$lambda_1;
+    var handler_0 = ReactBuilder$invoke$lambda_2(props, handler);
+    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(invoke$T_1)), props, handler_0);
+  };
+  function ReactBuilder$node$lambda($receiver) {
+  }
+  ReactBuilder.prototype.node_g12n31$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.node_g12n31$', function (node$T_0, isT, node$P_0, isP, $receiver, props, handler) {
+    if (handler === void 0)
+      handler = _.react.ReactBuilder.node$f;
+    return this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(node$T_0)), props, handler);
+  });
+  function ReactBuilder$invoke$lambda_3($receiver) {
+  }
+  function ReactBuilder$invoke$lambda_4(closure$props, closure$handler) {
+    return function ($receiver) {
+      closure$handler(closure$props);
+    };
+  }
+  ReactBuilder.prototype.invoke_ahipwd$_0 = function (invoke$P_2, isP, $receiver, handler) {
+    if (handler === void 0)
+      handler = ReactBuilder$invoke$lambda_3;
+    var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(invoke$P_2));
+    return this.enterReactNode_uztyw4$($receiver.ref, props, ReactBuilder$invoke$lambda_4(props, handler));
+  };
+  function ReactBuilder$node$lambda_0($receiver) {
+  }
+  ReactBuilder.prototype.node_arc5mv$ = Kotlin.defineInlineFunction('frontend.react.ReactBuilder.node_arc5mv$', function (node$P_1, isP, $receiver, props, handler) {
+    if (handler === void 0)
+      handler = _.react.ReactBuilder.node$f_0;
+    return this.enterReactNode_uztyw4$($receiver.ref, props, handler);
+  });
+  ReactBuilder.prototype.result = function () {
+    return this.lastLeaved_u0k4lr$_0;
+  };
+  ReactBuilder.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactBuilder',
+    interfaces: []
+  };
+  function ReactComponentNoState() {
+  }
+  ReactComponentNoState.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactComponentNoState',
+    interfaces: []
+  };
+  function ReactComponentNoProps() {
+    RProps.call(this);
+  }
+  ReactComponentNoProps.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactComponentNoProps',
+    interfaces: [RProps]
+  };
+  function ReactComponentEmptyProps() {
+    RProps.call(this);
+  }
+  ReactComponentEmptyProps.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'ReactComponentEmptyProps',
+    interfaces: [RProps]
   };
   function ReactElement() {
   }
@@ -821,7 +719,7 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
     if (child === void 0)
       child = null;
     var tmp$_0;
-    var tmp$_1 = (tmp$_0 = $module$react).createElement;
+    var tmp$_1 = (tmp$_0 = React).createElement;
     var tmp$_2 = [type, toPlainObjectStripNull(props)];
     var tmp$_3 = tmp$_2.concat;
     var $receiver = this.normalize_s8jyv4$(child);
@@ -839,29 +737,123 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
     }
     return ReactWrapper_instance;
   }
-  ReactDOMBuilder$onTagContentUnsafe$ObjectLiteral.prototype.raw_3p81yu$ = Unsafe.prototype.raw_3p81yu$;
-  ReactDOMBuilder$onTagContentUnsafe$ObjectLiteral.prototype.raw_61zpoe$ = Unsafe.prototype.raw_61zpoe$;
-  ReactDOMBuilder$onTagContentUnsafe$ObjectLiteral.prototype.raw_ws8or7$ = Unsafe.prototype.raw_ws8or7$;
+  function get_inputValue($receiver) {
+    var tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
+    return (tmp$_5 = (tmp$_4 = (tmp$_1 = Kotlin.isType(tmp$_0 = $receiver.target, HTMLInputElement) ? tmp$_0 : null) != null ? tmp$_1.value : null) != null ? tmp$_4 : (tmp$_3 = Kotlin.isType(tmp$_2 = $receiver.target, HTMLTextAreaElement) ? tmp$_2 : null) != null ? tmp$_3.value : null) != null ? tmp$_5 : '';
+  }
+  function jsObject$lambda(closure$builder) {
+    return function ($receiver) {
+      closure$builder($receiver);
+    };
+  }
+  var jsObject = Kotlin.defineInlineFunction('frontend.runtime.wrappers.jsObject_7qq44f$', function (builder) {
+    var obj = {};
+    builder(obj);
+    return obj;
+  });
+  var js_0 = Kotlin.defineInlineFunction('frontend.runtime.wrappers.js_5ij4lk$', function (builder) {
+    var obj = {};
+    builder(obj);
+    return obj;
+  });
+  function getOwnPropertyNames($receiver) {
+    var me = $receiver;
+    return Object.getOwnPropertyNames(me);
+  }
+  function toPlainObjectStripNull(me) {
+    var tmp$_0;
+    var obj = {};
+    var $receiver = getOwnPropertyNames(me);
+    var destination_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$();
+    var tmp$_1;
+    for (tmp$_1 = 0; tmp$_1 !== $receiver.length; ++tmp$_1) {
+      var element = $receiver[tmp$_1];
+      if (!(Kotlin.equals(element, '__proto__') || Kotlin.equals(element, 'constructor'))) {
+        destination_0.add_11rb$(element);
+      }
+    }
+    tmp$_0 = destination_0.iterator();
+    while (tmp$_0.hasNext()) {
+      var p = tmp$_0.next();
+      if (me[p] != null) {
+        obj[p] = me[p];
+      }
+    }
+    return obj;
+  }
+  function jsstyle(builder) {
+    var obj = {};
+    builder(obj);
+    return obj;
+  }
+  function createInstance($receiver) {
+    var ctor = get_js($receiver);
+    return new ctor();
+  }
+  function main$lambda$lambda$lambda($receiver) {
+  }
+  function main$lambda$lambda(this$) {
+    return function ($receiver) {
+      var $this = this$;
+      HelloWorld$Companion_getInstance();
+      var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(ReactComponentNoProps));
+      $this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(HelloWorld)), props, ReactBuilder$invoke$lambda_0(props, main$lambda$lambda$lambda));
+    };
+  }
+  function main$lambda($receiver) {
+    div($receiver, void 0, main$lambda$lambda($receiver));
+  }
+  function main(args) {
+    render(ReactDOM, document.getElementById('react-app'), main$lambda);
+  }
+  function HelloWorld() {
+    HelloWorld$Companion_getInstance();
+    ReactDOMComponent.call(this);
+    this.state = new ReactComponentNoState();
+  }
+  function HelloWorld$Companion() {
+    HelloWorld$Companion_instance = this;
+  }
+  HelloWorld$Companion.$metadata$ = {
+    kind: Kotlin.Kind.OBJECT,
+    simpleName: 'Companion',
+    interfaces: [ReactComponentSpec]
+  };
+  var HelloWorld$Companion_instance = null;
+  function HelloWorld$Companion_getInstance() {
+    if (HelloWorld$Companion_instance === null) {
+      new HelloWorld$Companion();
+    }
+    return HelloWorld$Companion_instance;
+  }
+  HelloWorld.prototype.componentDidMount = function () {
+    ReactDOMComponent.prototype.componentDidMount.call(this);
+  };
+  function HelloWorld$render$lambda$lambda($receiver) {
+    $receiver.unaryPlus_pdl1vz$('Hello World By Kotlin Javascript!');
+  }
+  function HelloWorld$render$lambda($receiver) {
+    for (var i = 1; i <= 3; i++) {
+      h1($receiver, void 0, HelloWorld$render$lambda$lambda);
+    }
+  }
+  HelloWorld.prototype.render_vhjzqq$ = function ($receiver) {
+    div($receiver, void 0, HelloWorld$render$lambda);
+  };
+  HelloWorld.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'HelloWorld',
+    interfaces: [ReactDOMComponent]
+  };
   ReactDOMBuilder$onTagContentUnsafe$ObjectLiteral.prototype.unaryPlus_lvwjq6$ = Unsafe.prototype.unaryPlus_lvwjq6$;
   ReactDOMBuilder.prototype.onTagError_cjwpn3$ = TagConsumer.prototype.onTagError_cjwpn3$;
-  var package$runtime = _.runtime || (_.runtime = {});
-  var package$wrappers = package$runtime.wrappers || (package$runtime.wrappers = {});
-  package$wrappers.jsObject$f = jsObject$lambda;
-  package$wrappers.jsObject_7qq44f$ = jsObject;
-  package$wrappers.js_5ij4lk$ = js_0;
-  package$wrappers.getOwnPropertyNames_s8jyvk$ = getOwnPropertyNames;
-  package$wrappers.toPlainObjectStripNull_za3rmp$ = toPlainObjectStripNull;
-  package$wrappers.jsstyle_5ij4lk$ = jsstyle;
-  var package$reflect = package$runtime.reflect || (package$runtime.reflect = {});
-  package$reflect.createInstance_1yb8b7$ = createInstance;
-  _.main_kand9s$ = main;
-  Object.defineProperty(HelloWorld, 'Companion', {
-    get: HelloWorld$Companion_getInstance
-  });
-  _.HelloWorld = HelloWorld;
   var package$react = _.react || (_.react = {});
+  package$react.ReactComponentLifecycleListener = ReactComponentLifecycleListener;
+  package$react.ReactExtensionProvider = ReactExtensionProvider;
+  package$react.BaseReactExtension = BaseReactExtension;
+  package$react.BaseReactExtensionReadWriteProperty = BaseReactExtensionReadWriteProperty;
+  package$react.BaseReactExtensionReadOnlyProperty = BaseReactExtensionReadOnlyProperty;
   var package$dom = package$react.dom || (package$react.dom = {});
-  package$dom.render_jzglv5$ = render;
   package$dom.fixAttributeName_61zpoe$ = fixAttributeName;
   package$dom.get_defaultValue_a2ovwx$ = get_defaultValue;
   package$dom.set_defaultValue_q3v29f$ = set_defaultValue;
@@ -869,38 +861,49 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
   package$dom.set_defaultValue_5ng1o5$ = set_defaultValue_0;
   package$dom.get_value_dtfm6v$ = get_value;
   package$dom.set_value_5ng1o5$ = set_value;
+  package$dom.render_jzglv5$ = render;
+  package$dom.ReactDOMComponent = ReactDOMComponent;
+  package$dom.ReactDOMStatelessComponent = ReactDOMStatelessComponent;
+  package$dom.ReactDOMPropslessComponent = ReactDOMPropslessComponent;
+  package$dom.ReactDOMStaticComponent = ReactDOMStaticComponent;
   package$dom.InnerHTML = InnerHTML;
   package$dom.DOMProps = DOMProps;
   ReactDOMBuilder.DOMNode = ReactDOMBuilder$DOMNode;
   package$dom.ReactDOMBuilder = ReactDOMBuilder;
   package$dom.buildElement_yic5sk$ = buildElement;
-  package$dom.ReactDOMComponent = ReactDOMComponent;
-  package$dom.ReactDOMStatelessComponent = ReactDOMStatelessComponent;
-  package$dom.ReactDOMPropslessComponent = ReactDOMPropslessComponent;
-  package$dom.ReactDOMStaticComponent = ReactDOMStaticComponent;
-  package$react.ReactComponentNoState = ReactComponentNoState;
-  package$react.ReactComponentNoProps = ReactComponentNoProps;
-  package$react.ReactComponentEmptyProps = ReactComponentEmptyProps;
-  package$react.ReactDsl = ReactDsl;
-  ReactBuilder.Node = ReactBuilder$Node;
-  ReactBuilder.node$f = ReactBuilder$node$lambda;
-  Object.defineProperty(ReactComponent, 'Companion', {
-    get: ReactComponent$Companion_getInstance
-  });
-  ReactBuilder.node$f_0 = ReactBuilder$node$lambda_0;
-  package$react.ReactBuilder = ReactBuilder;
   package$react.RProps = RProps;
   package$react.BoxedState = BoxedState;
   package$react.ReactComponentSpec = ReactComponentSpec;
+  Object.defineProperty(ReactComponent, 'Companion', {
+    get: ReactComponent$Companion_getInstance
+  });
   package$react.ReactComponent = ReactComponent;
   package$react.ReactComponentWrapper = ReactComponentWrapper;
-  package$react.ReactComponentLifecycleListener = ReactComponentLifecycleListener;
-  package$react.ReactExtensionProvider = ReactExtensionProvider;
-  package$react.BaseReactExtension = BaseReactExtension;
-  package$react.BaseReactExtensionReadWriteProperty = BaseReactExtensionReadWriteProperty;
-  package$react.BaseReactExtensionReadOnlyProperty = BaseReactExtensionReadOnlyProperty;
   package$react.ReactExternalComponentSpec = ReactExternalComponentSpec;
+  package$react.ReactDsl = ReactDsl;
+  ReactBuilder.Node = ReactBuilder$Node;
+  var package$runtime = _.runtime || (_.runtime = {});
+  var package$reflect = package$runtime.reflect || (package$runtime.reflect = {});
+  package$reflect.createInstance_1yb8b7$ = createInstance;
+  ReactBuilder.node$f = ReactBuilder$node$lambda;
+  ReactBuilder.node$f_0 = ReactBuilder$node$lambda_0;
+  package$react.ReactBuilder = ReactBuilder;
+  package$react.ReactComponentNoState = ReactComponentNoState;
+  package$react.ReactComponentNoProps = ReactComponentNoProps;
+  package$react.ReactComponentEmptyProps = ReactComponentEmptyProps;
   package$react.ReactElement = ReactElement;
+  var package$wrappers = package$runtime.wrappers || (package$runtime.wrappers = {});
+  package$wrappers.jsObject$f = jsObject$lambda;
+  package$wrappers.jsObject_7qq44f$ = jsObject;
+  package$wrappers.js_5ij4lk$ = js_0;
+  package$wrappers.getOwnPropertyNames_s8jyvk$ = getOwnPropertyNames;
+  package$wrappers.toPlainObjectStripNull_za3rmp$ = toPlainObjectStripNull;
+  package$wrappers.jsstyle_5ij4lk$ = jsstyle;
+  _.main_kand9s$ = main;
+  Object.defineProperty(HelloWorld, 'Companion', {
+    get: HelloWorld$Companion_getInstance
+  });
+  _.HelloWorld = HelloWorld;
   events = listOf(['onCopy', 'onCut', 'onPaste', 'onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate', 'onKeyDown', 'onKeyPress', 'onKeyUp', 'onFocus', 'onBlur', 'onChange', 'onInput', 'onSubmit', 'onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp', 'onSelect', 'onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart', 'onScroll', 'onWheel', 'onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting', 'onLoad', 'onError', 'onAnimationStart', 'onAnimationEnd', 'onAnimationIteration', 'onTransitionEnd', 'accept', 'acceptCharset', 'accessKey', 'action', 'allowFullScreen', 'allowTransparency', 'alt', 'async', 'autoComplete', 'autoFocus', 'autoPlay', 'capture', 'cellPadding', 'cellSpacing', 'challenge', 'charSet', 'checked', 'cite', 'classID', 'className', 'colSpan', 'cols', 'content', 'contentEditable', 'contextMenu', 'controls', 'coords', 'crossOrigin', 'data', 'dateTime', 'default', 'defer', 'dir', 'disabled', 'download', 'draggable', 'encType', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'frameBorder', 'headers', 'height', 'hidden', 'high', 'href', 'hrefLang', 'htmlFor', 'httpEquiv', 'icon', 'id', 'inputMode', 'integrity', 'is', 'keyParams', 'keyType', 'kind', 'label', 'lang', 'list', 'loop', 'low', 'manifest', 'marginHeight', 'marginWidth', 'max', 'maxLength', 'media', 'mediaGroup', 'method', 'min', 'minLength', 'multiple', 'muted', 'name', 'noValidate', 'nonce', 'open', 'optimum', 'pattern', 'placeholder', 'poster', 'preload', 'profile', 'radioGroup', 'readOnly', 'rel', 'required', 'reversed', 'role', 'rowSpan', 'rows', 'sandbox', 'scope', 'scoped', 'scrolling', 'seamless', 'selected', 'shape', 'size', 'sizes', 'span', 'spellCheck', 'src', 'srcDoc', 'srcLang', 'srcSet', 'start', 'step', 'style', 'summary', 'tabIndex', 'target', 'title', 'type', 'useMap', 'value', 'width', 'wmode', 'wrap']);
   var destination = Kotlin.kotlin.collections.ArrayList_init_ww73n8$(Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$(events, 10));
   var tmp$;
@@ -915,4 +918,4 @@ define('frontend', ['exports', 'kotlin', 'kotlinx-html-js', 'react'], function (
   Kotlin.defineModule('frontend', _);
   main([]);
   return _;
-});
+}(typeof frontend === 'undefined' ? {} : frontend, kotlin, this['kotlinx-html-js']);
