@@ -33,9 +33,11 @@ class HelloWorld : ReactDOMComponent<ReactComponentNoProps,ReactComponentNoState
     }
 
     override fun ReactDOMBuilder.render() {
-        div{
-            h1{
-                +"Hello World By Kotlin Javascript!"
+            div {
+                for(i in 1..3) {
+                    h1 {
+                    +"Hello World By Kotlin Javascript!"
+                }
             }
         }
     }

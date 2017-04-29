@@ -1,0 +1,30 @@
+group = 'groupId'
+version = '1.0-SNAPSHOT'
+
+
+subprojects{
+    p -> p.buildscript {
+
+            repositories {
+                mavenLocal()
+                jcenter()
+                maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
+            }
+
+            dependencies {
+                classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.1"
+                classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.18"
+            }
+        }
+}
+
+subprojects {
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven { url "http://dl.bintray.com/kotlin/kotlinx.html" }
+        maven { url "http://dl.bintray.com/kotlin/ktor" }
+        maven { url "https://dl.bintray.com/kotlin/squash" }
+    }
+}

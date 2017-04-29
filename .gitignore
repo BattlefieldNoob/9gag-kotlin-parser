@@ -5,6 +5,13 @@
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+.gradle/
+frontend/target
+backend/build
+frontend/build
+build
+public/frontend
+public/*
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
@@ -49,3 +56,5 @@ crashlytics-build.properties
 fabric.properties
 
 target/classes/
+
+\.DS_Store
