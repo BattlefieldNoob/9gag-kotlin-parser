@@ -4,11 +4,11 @@ var webpack = require('./build/WebPackHelper.js');
 var path = require('path')
 
 var config = {
-    "context": "/Users/antonio/IdeaProjects/9gag-kotlin-parser/frontend/build/js",
+    "context": path.resolve('build/js'),
      entry: "frontend",
     "output": {
-         path: path.resolve('../public'),
-        "filename": "[name].bundle.js",
+         path: path.resolve('../../public'),
+        "filename": "frontend.bundle.js",
         "chunkFilename": "[id].bundle.js",
         "publicPath": "/frontend/"
     },
