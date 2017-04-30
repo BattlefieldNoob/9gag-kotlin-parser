@@ -47,12 +47,12 @@ fun main(args: Array<String>) {
                 files(file)
             }
 
-           /* get("/{section}"){
+            get("/photo/{section}"){
                 val section=call.parameters["section"]
                 val request=parser.getPosts(10);
-                val json=Gson().toJson(request)
-                call.respondText("Hello, world!, ${section}  $json", ContentType.Text.Html)
-            }*/
+                val json=Gson().toJson(request.data[0])
+                call.respondText(json, ContentType.Application.Json)
+            }
         }
     }.start(wait = true)
 }

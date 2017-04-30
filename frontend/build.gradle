@@ -4,8 +4,6 @@ group = 'groupId'
 apply plugin: 'kotlin2js'
 apply plugin: 'org.jetbrains.kotlin.frontend'
 
-version = '1.0-SNAPSHOT'
-
 repositories {
     jcenter()
      maven { url "https://dl.bintray.com/kotlin/ktor" }
@@ -16,7 +14,6 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-js', version:'1.1.1'
     compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-html-js', version:'0.6.2'
     compile "org.jetbrains.kotlin:kotlin-test-js:1.1.1"
-
 }
 
 sourceSets {

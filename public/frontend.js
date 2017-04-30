@@ -28,7 +28,8 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
   var filterNotNull_0 = Kotlin.kotlin.collections.filterNotNull_emfgvx$;
   var listOf_1 = Kotlin.kotlin.collections.listOf_mh5how$;
   var div = $module$kotlinx_html_js.kotlinx.html.div_59el9d$;
-  var h1 = $module$kotlinx_html_js.kotlinx.html.h1_vmej1w$;
+  var img = $module$kotlinx_html_js.kotlinx.html.img_evw26v$;
+  var json = Kotlin.kotlin.js.json_pyyo18$;
   BaseReactExtensionReadWriteProperty.prototype = Object.create(BaseReactExtension.prototype);
   BaseReactExtensionReadWriteProperty.prototype.constructor = BaseReactExtensionReadWriteProperty;
   BaseReactExtensionReadOnlyProperty.prototype = Object.create(BaseReactExtension.prototype);
@@ -53,6 +54,12 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
   ReactComponentEmptyProps.prototype.constructor = ReactComponentEmptyProps;
   HelloWorld.prototype = Object.create(ReactDOMComponent.prototype);
   HelloWorld.prototype.constructor = HelloWorld;
+  React9gagPhoto$Props.prototype = Object.create(RProps.prototype);
+  React9gagPhoto$Props.prototype.constructor = React9gagPhoto$Props;
+  React9gagPhoto.prototype = Object.create(ReactDOMComponent.prototype);
+  React9gagPhoto.prototype.constructor = React9gagPhoto;
+  React9gagFeed.prototype = Object.create(ReactDOMComponent.prototype);
+  React9gagFeed.prototype.constructor = React9gagFeed;
   function ReactComponentLifecycleListener() {
   }
   ReactComponentLifecycleListener.$metadata$ = {
@@ -795,15 +802,16 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
   function main$lambda$lambda(this$) {
     return function ($receiver) {
       var $this = this$;
-      HelloWorld$Companion_getInstance();
+      React9gagFeed$Companion_getInstance();
       var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(ReactComponentNoProps));
-      $this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(HelloWorld)), props, ReactBuilder$invoke$lambda_0(props, main$lambda$lambda$lambda));
+      $this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(React9gagFeed)), props, ReactBuilder$invoke$lambda_0(props, main$lambda$lambda$lambda));
     };
   }
   function main$lambda($receiver) {
     div($receiver, void 0, main$lambda$lambda($receiver));
   }
   function main(args) {
+    console.log('HELLO!');
     render(ReactDOM, document.getElementById('react-app'), main$lambda);
   }
   function HelloWorld() {
@@ -829,13 +837,8 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
   HelloWorld.prototype.componentDidMount = function () {
     ReactDOMComponent.prototype.componentDidMount.call(this);
   };
-  function HelloWorld$render$lambda$lambda($receiver) {
-    $receiver.unaryPlus_pdl1vz$('Hello World By Kotlin Javascript!');
-  }
   function HelloWorld$render$lambda($receiver) {
-    for (var i = 1; i <= 3; i++) {
-      h1($receiver, void 0, HelloWorld$render$lambda$lambda);
-    }
+    new React9gagFeed();
   }
   HelloWorld.prototype.render_vhjzqq$ = function ($receiver) {
     div($receiver, void 0, HelloWorld$render$lambda);
@@ -845,6 +848,161 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
     simpleName: 'HelloWorld',
     interfaces: [ReactDOMComponent]
   };
+  function React9gagPhoto() {
+    React9gagPhoto$Companion_getInstance();
+    ReactDOMComponent.call(this);
+    console.log('Stated photo');
+  }
+  function React9gagPhoto$Companion() {
+    React9gagPhoto$Companion_instance = this;
+  }
+  React9gagPhoto$Companion.$metadata$ = {
+    kind: Kotlin.Kind.OBJECT,
+    simpleName: 'Companion',
+    interfaces: [ReactComponentSpec]
+  };
+  var React9gagPhoto$Companion_instance = null;
+  function React9gagPhoto$Companion_getInstance() {
+    if (React9gagPhoto$Companion_instance === null) {
+      new React9gagPhoto$Companion();
+    }
+    return React9gagPhoto$Companion_instance;
+  }
+  function React9gagPhoto$Props(url) {
+    RProps.call(this);
+    this.url = url;
+  }
+  React9gagPhoto$Props.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'Props',
+    interfaces: [RProps]
+  };
+  function React9gagPhoto$render$lambda(this$React9gagPhoto) {
+    return function ($receiver) {
+      img($receiver, void 0, this$React9gagPhoto.props.url);
+    };
+  }
+  React9gagPhoto.prototype.render_vhjzqq$ = function ($receiver) {
+    div($receiver, void 0, React9gagPhoto$render$lambda(this));
+  };
+  React9gagPhoto.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'React9gagPhoto',
+    interfaces: [ReactDOMComponent]
+  };
+  function React9gagFeed() {
+    React9gagFeed$Companion_getInstance();
+    ReactDOMComponent.call(this);
+    console.log('Stated Feed');
+    this.state = new BoxedState('');
+    console.log('Status:' + this.state);
+    requestAndParseResult('GET', '/photo/hot', null, Kotlin.getCallableRef('parse9gagJson', function (json_0) {
+      return parse9gagJson(json_0);
+    })).then(React9gagFeed_init$lambda);
+  }
+  function React9gagFeed$Companion() {
+    React9gagFeed$Companion_instance = this;
+  }
+  React9gagFeed$Companion.$metadata$ = {
+    kind: Kotlin.Kind.OBJECT,
+    simpleName: 'Companion',
+    interfaces: [ReactComponentSpec]
+  };
+  var React9gagFeed$Companion_instance = null;
+  function React9gagFeed$Companion_getInstance() {
+    if (React9gagFeed$Companion_instance === null) {
+      new React9gagFeed$Companion();
+    }
+    return React9gagFeed$Companion_instance;
+  }
+  function React9gagFeed$render$lambda$lambda(this$React9gagFeed) {
+    return function ($receiver) {
+      $receiver.url = this$React9gagFeed.state.state;
+    };
+  }
+  function React9gagFeed$render$lambda(this$React9gagFeed, this$render) {
+    return function ($receiver) {
+      if (this$React9gagFeed.state.state.length > 0) {
+        console;
+        var $this = this$render;
+        React9gagPhoto$Companion_getInstance();
+        var handler = React9gagFeed$render$lambda$lambda(this$React9gagFeed);
+        var props = _.runtime.reflect.createInstance_1yb8b7$(Kotlin.getKClass(React9gagPhoto$Props));
+        $this.enterReactNode_uztyw4$(_.react.ReactComponent.Companion.wrap_v5not5$(Kotlin.getKClass(React9gagPhoto)), props, ReactBuilder$invoke$lambda_0(props, handler));
+      }
+    };
+  }
+  React9gagFeed.prototype.render_vhjzqq$ = function ($receiver) {
+    div($receiver, void 0, React9gagFeed$render$lambda(this, $receiver));
+  };
+  function React9gagFeed_init$lambda$lambda(closure$response) {
+    return function () {
+      console.log('Response:' + closure$response);
+    };
+  }
+  function React9gagFeed_init$lambda(response) {
+    return React9gagFeed_init$lambda$lambda(response);
+  }
+  React9gagFeed.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    simpleName: 'React9gagFeed',
+    interfaces: [ReactDOMComponent]
+  };
+  function requestAndParseResult$lambda$ObjectLiteral(closure$method, closure$body) {
+    this.method_xak96e$_0 = closure$method;
+    this.body_xak96e$_0 = closure$body;
+    this.headers_xak96e$_0 = json([to('Accept', 'application/json')]);
+  }
+  Object.defineProperty(requestAndParseResult$lambda$ObjectLiteral.prototype, 'method', {
+    get: function () {
+      return this.method_xak96e$_0;
+    },
+    set: function (method) {
+      this.method_xak96e$_0 = method;
+    }
+  });
+  Object.defineProperty(requestAndParseResult$lambda$ObjectLiteral.prototype, 'body', {
+    get: function () {
+      return this.body_xak96e$_0;
+    },
+    set: function (body) {
+      this.body_xak96e$_0 = body;
+    }
+  });
+  Object.defineProperty(requestAndParseResult$lambda$ObjectLiteral.prototype, 'headers', {
+    get: function () {
+      return this.headers_xak96e$_0;
+    },
+    set: function (headers) {
+      this.headers_xak96e$_0 = headers;
+    }
+  });
+  requestAndParseResult$lambda$ObjectLiteral.$metadata$ = {
+    kind: Kotlin.Kind.CLASS,
+    interfaces: []
+  };
+  function requestAndParseResult$lambda$lambda$lambda(closure$resolve, closure$parse) {
+    return function (it) {
+      closure$resolve(closure$parse(it));
+    };
+  }
+  function requestAndParseResult$lambda$lambda(closure$resolve, closure$parse, closure$reject) {
+    return function (response) {
+      response.json().then(requestAndParseResult$lambda$lambda$lambda(closure$resolve, closure$parse), closure$reject).catch(closure$reject);
+    };
+  }
+  function requestAndParseResult$lambda(closure$url, closure$method, closure$body, closure$parse) {
+    return function (resolve, reject) {
+      window.fetch(closure$url, new requestAndParseResult$lambda$ObjectLiteral(closure$method, closure$body)).then(requestAndParseResult$lambda$lambda(resolve, closure$parse, reject), reject).catch(reject);
+    };
+  }
+  function requestAndParseResult(method, url, body, parse) {
+    console.log('REQUEST');
+    return new Promise(requestAndParseResult$lambda(url, method, body, parse));
+  }
+  function parse9gagJson(json_0) {
+    return json_0.images.small;
+  }
   ReactDOMBuilder$onTagContentUnsafe$ObjectLiteral.prototype.unaryPlus_lvwjq6$ = Unsafe.prototype.unaryPlus_lvwjq6$;
   ReactDOMBuilder.prototype.onTagError_cjwpn3$ = TagConsumer.prototype.onTagError_cjwpn3$;
   var package$react = _.react || (_.react = {});
@@ -904,6 +1062,16 @@ var frontend = function (_, Kotlin, $module$kotlinx_html_js) {
     get: HelloWorld$Companion_getInstance
   });
   _.HelloWorld = HelloWorld;
+  Object.defineProperty(React9gagPhoto, 'Companion', {
+    get: React9gagPhoto$Companion_getInstance
+  });
+  React9gagPhoto.Props = React9gagPhoto$Props;
+  _.React9gagPhoto = React9gagPhoto;
+  Object.defineProperty(React9gagFeed, 'Companion', {
+    get: React9gagFeed$Companion_getInstance
+  });
+  _.React9gagFeed = React9gagFeed;
+  _.requestAndParseResult_7af5f2$ = requestAndParseResult;
   events = listOf(['onCopy', 'onCut', 'onPaste', 'onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate', 'onKeyDown', 'onKeyPress', 'onKeyUp', 'onFocus', 'onBlur', 'onChange', 'onInput', 'onSubmit', 'onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp', 'onSelect', 'onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart', 'onScroll', 'onWheel', 'onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting', 'onLoad', 'onError', 'onAnimationStart', 'onAnimationEnd', 'onAnimationIteration', 'onTransitionEnd', 'accept', 'acceptCharset', 'accessKey', 'action', 'allowFullScreen', 'allowTransparency', 'alt', 'async', 'autoComplete', 'autoFocus', 'autoPlay', 'capture', 'cellPadding', 'cellSpacing', 'challenge', 'charSet', 'checked', 'cite', 'classID', 'className', 'colSpan', 'cols', 'content', 'contentEditable', 'contextMenu', 'controls', 'coords', 'crossOrigin', 'data', 'dateTime', 'default', 'defer', 'dir', 'disabled', 'download', 'draggable', 'encType', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'frameBorder', 'headers', 'height', 'hidden', 'high', 'href', 'hrefLang', 'htmlFor', 'httpEquiv', 'icon', 'id', 'inputMode', 'integrity', 'is', 'keyParams', 'keyType', 'kind', 'label', 'lang', 'list', 'loop', 'low', 'manifest', 'marginHeight', 'marginWidth', 'max', 'maxLength', 'media', 'mediaGroup', 'method', 'min', 'minLength', 'multiple', 'muted', 'name', 'noValidate', 'nonce', 'open', 'optimum', 'pattern', 'placeholder', 'poster', 'preload', 'profile', 'radioGroup', 'readOnly', 'rel', 'required', 'reversed', 'role', 'rowSpan', 'rows', 'sandbox', 'scope', 'scoped', 'scrolling', 'seamless', 'selected', 'shape', 'size', 'sizes', 'span', 'spellCheck', 'src', 'srcDoc', 'srcLang', 'srcSet', 'start', 'step', 'style', 'summary', 'tabIndex', 'target', 'title', 'type', 'useMap', 'value', 'width', 'wmode', 'wrap']);
   var destination = Kotlin.kotlin.collections.ArrayList_init_ww73n8$(Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$(events, 10));
   var tmp$;
