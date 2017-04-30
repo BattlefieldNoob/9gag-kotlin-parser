@@ -20,11 +20,7 @@ class IndexPage : Template<HTML> {
                 id = "react-app"
             }
 
-            script(ScriptType.textJavaScript, "https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js")
-            script(ScriptType.textJavaScript, "https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js")
-            script(src = "kotlin.js")
-            script(src = "kotlinx-html-js.js")
-            script(src = "frontend.js")
+            script(src = "frontend.bundle.js")
         }
     }
 }

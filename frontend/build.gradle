@@ -27,19 +27,36 @@ sourceSets {
 
 compileKotlin2Js {
     kotlinOptions.metaInfo = true
-    kotlinOptions.outputFile = "$parent.projectDir/public/${project.name}.js"
-    kotlinOptions.moduleKind = 'plain'
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.moduleKind = 'commonjs'
+    kotlinOptions.main = "call"
 }
 
-task copykotlin(type: Copy) {
-    from file(buildDir.path+"/node_modules/kotlin/kotlin.js")
-//    into sourceSets.main.output.resourcesDir
-    into file("$parent.projectDir/public/")
-}
+kotlinFrontend {
+    downloadNodeJsVersion = "latest"
 
-task copykotlinhtmljs(type: Copy) {
-    from file(buildDir.path+"/node_modules/kotlin-html-js/kotlin-html-js.js")
-//    into sourceSets.main.output.resourcesDir
-    into file("$parent.projectDir/public/")
+    npm{
+        replaceVersion("kotlinx-html-js", "1.1.0")
+        replaceVersion("kotlinx-html-shared", "1.1.0")
+        replaceVersion("kotlin-js-library", "1.1.0")
+
+        dependency("react")
+        dependency("react-dom")
+        dependency("react-router")
+        dependency("jquery")
+        dependency("react-markdown")
+
+
+        devDependency("css-loader")
+        devDependency("style-loader")
+        devDependency("babel-loader")
+        devDependency("babel-core")
+        devDependency("karma")
+    }
+
+    webpackBundle {
+        webpackConfigFile = project.projectDir.path + '/webpack.config.js'
+    }
 }
 
