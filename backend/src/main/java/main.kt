@@ -1,17 +1,22 @@
 import com.google.gson.Gson
-import kotlinx.html.*
 import org.jetbrains.ktor.application.call
+import org.jetbrains.ktor.content.files
+import org.jetbrains.ktor.content.serveFileSystem
+import org.jetbrains.ktor.content.static
+import org.jetbrains.ktor.host.ApplicationHostEnvironment
+import org.jetbrains.ktor.host.ApplicationHostEnvironmentBuilder
 import org.jsoup.Jsoup
 import org.jetbrains.ktor.host.embeddedServer
-import org.jetbrains.ktor.html.Template
 import org.jetbrains.ktor.html.respondHtmlTemplate
 import org.jetbrains.ktor.http.ContentType
 import org.jetbrains.ktor.http.HttpStatusCode
 import org.jetbrains.ktor.netty.Netty
+import org.jetbrains.ktor.netty.NettyApplicationHost
 import org.jetbrains.ktor.response.respondText
 import org.jetbrains.ktor.routing.get
 import org.jetbrains.ktor.routing.routing
 import org.jsoup.nodes.Document
+import java.io.File
 
 /**
  * Created by antonio on 20/04/17.
@@ -20,27 +25,33 @@ import org.jsoup.nodes.Document
 fun main(args: Array<String>) {
     val parser=NineGagParser()
     println("Server Start!")
+    val file = File("public")
+    println(file.absolutePath)
     embeddedServer(Netty, 8080) {
         routing {
-            get("/{section}/{nextPageId}") {
+         /*   get("/{section}/{nextPageId}") {
                 val section=call.parameters["section"]
                 val id=call.parameters["nextPageId"]
                 val request=parser.getPosts(10,id);
                 val json=Gson().toJson(request)
                 call.respondText("Hello, world!, ${section} and ${id}   $json", ContentType.Text.Html)
-            }
+            }*/
 
             get("/"){
-                call.respondHtmlTemplate(Home(), HttpStatusCode.OK){
+                call.respondHtmlTemplate(IndexPage(), HttpStatusCode.OK){
 
                 }
             }
 
-            get("/{section}"){
+            static {
+                files(file)
+            }
+
+            get("/photo/{section}"){
                 val section=call.parameters["section"]
                 val request=parser.getPosts(10);
-                val json=Gson().toJson(request)
-                call.respondText("Hello, world!, ${section}  $json", ContentType.Text.Html)
+                val json=Gson().toJson(request.data[0])
+                call.respondText(json, ContentType.Application.Json)
             }
         }
     }.start(wait = true)
@@ -82,34 +93,3 @@ data class GagRequest(val status:Int,val message:String, val data: List<Gag>, va
 
 data class Gag(val id:String,val caption:String,val images:HashMap<String,String>)
 
-
-class Home : Template<HTML> {
-
-    override fun HTML.apply() {
-        head{
-            title("HelloWorld!")
-        }
-
-        body{
-            div {
-                +"Hello World!!!!!!"
-            }
-
-            div{
-                id="react-app"
-            }
-
-            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js")
-            script(ScriptType.textJavaScript,"https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js")
-
-            script{
-                unsafe {
-                    +""" var rootElement = React.createElement("div", {}, React.createElement('h1', {}, "Contacts"))
-
-                    ReactDOM.render(rootElement, document.getElementById('react-app'))"""
-                }
-            }
-        }
-    }
-
-}
