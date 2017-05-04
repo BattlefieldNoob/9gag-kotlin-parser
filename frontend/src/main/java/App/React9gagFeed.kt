@@ -1,13 +1,17 @@
 package App
 
 import kotlinx.html.div
+import kotlinx.html.li
+import kotlinx.html.ul
 import org.w3c.fetch.RequestInit
 import react.RState
 import react.ReactComponentNoProps
 import react.ReactComponentSpec
 import react.dom.ReactDOMBuilder
 import react.dom.ReactDOMComponent
+import kotlin.browser.document
 import kotlin.browser.window
+import kotlin.js.Json
 import kotlin.js.Promise
 import kotlin.js.json
 
@@ -18,23 +22,37 @@ import kotlin.js.json
 class React9gagFeed : ReactDOMComponent<ReactComponentNoProps, React9gagFeed.State>(){
     companion object : ReactComponentSpec<React9gagFeed, ReactComponentNoProps, State>
 
-    class State(var json:String): RState
+    class State(var json:ArrayList<dynamic>, var paging:String): RState
 
     init {
-        state = State("")
+        state = State(ArrayList<dynamic>(),"")
         requestAndParseResult("GET","/photo/hot",null,parse = ::parse9gagJson).then({ response ->
             this.setState(builder = {
-                state.json=response;
+                state.json=response.second
+                state.paging=response.first
             })
         })
-
+        document.onscroll = { event->
+            if(document.body!!.scrollHeight == document.body!!.scrollTop.toInt() + window.innerHeight){
+                requestAndParseResult("GET","/next/hot/${state.paging}",null,parse = ::parse9gagJson).then({ response ->
+                    this.setState(builder = {
+                        state.json.addAll(response.second)
+                        state.paging=response.first
+                    })
+                })
+            }
+        }
     }
 
     override fun ReactDOMBuilder.render() {
         div{
-            if(state.json.isNotEmpty()){
-                React9gagPhoto {
-                    url = state.json
+            ul {
+                for (item in state.json) {
+                    li {
+                        React9gagPhoto {
+                            url = item.images.small
+                        }
+                    }
                 }
             }
         }
@@ -56,6 +74,10 @@ class React9gagFeed : ReactDOMComponent<ReactComponentNoProps, React9gagFeed.Sta
     }
 }
 
-private fun parse9gagJson(json:dynamic):String {
-    return json.images.small
+private fun parse9gagJson(json:dynamic):Pair<String,ArrayList<dynamic>> {
+    val a = ArrayList<dynamic>()
+    for(item in json.data){
+        a.add(item)
+    }
+    return Pair(json.paging,a)
 }

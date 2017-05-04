@@ -29,13 +29,13 @@ fun main(args: Array<String>) {
     println(file.absolutePath)
     embeddedServer(Netty, 8080) {
         routing {
-         /*   get("/{section}/{nextPageId}") {
+            get("/next/{section}/{nextPageId}") {
                 val section=call.parameters["section"]
                 val id=call.parameters["nextPageId"]
                 val request=parser.getPosts(10,id);
                 val json=Gson().toJson(request)
-                call.respondText("Hello, world!, ${section} and ${id}   $json", ContentType.Text.Html)
-            }*/
+                call.respondText(json, ContentType.Application.Json)
+            }
 
             get("/"){
                 call.respondHtmlTemplate(IndexPage(), HttpStatusCode.OK){
@@ -50,7 +50,8 @@ fun main(args: Array<String>) {
             get("/photo/{section}"){
                 val section=call.parameters["section"]
                 val request=parser.getPosts(10);
-                val json=Gson().toJson(request.data[0])
+                println(request)
+                val json=Gson().toJson(request)
                 call.respondText(json, ContentType.Application.Json)
             }
         }
@@ -69,7 +70,7 @@ class NineGagParser {
         if (nextPage==null || nextPage.isEmpty())
             doc = Jsoup.connect(baseUrl).get()
         else
-            doc = Jsoup.connect(baseUrl + nextPage).get()
+            doc = Jsoup.connect(baseUrl + "/?id="+ nextPage).get()
 
         val next = doc.getElementsByClass("badge-load-more-post").first().attr("href")
 
@@ -85,7 +86,7 @@ class NineGagParser {
                 list.add(Gag("ID","HELLO", hashMapOf("small" to link,"cover" to link,"normal" to link,"large" to link)))
             }
         }
-        return GagRequest(200,"OK",list, next.split("%")[0])
+        return GagRequest(200,"OK",list, next.split("%")[0].split("=")[1])
     }
 }
 
