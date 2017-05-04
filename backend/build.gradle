@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'application'
 
 group = 'groupId'
 version = '1.0-SNAPSHOT'
@@ -9,7 +10,7 @@ description = """"""
 sourceCompatibility = 1.5
 targetCompatibility = 1.5
 
-
+mainClassName = "MainKt"
 
 repositories {
         
