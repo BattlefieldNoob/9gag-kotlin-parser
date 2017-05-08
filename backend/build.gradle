@@ -35,3 +35,16 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version:'1.1.1'
     testCompile group: 'org.jetbrains.kotlin', name: 'kotlin-test', version:'1.1.1'
 }
+
+jar {
+    manifest {
+        attributes  'Main-Class': 'org.jetbrains.ktor.netty.DevelopmentHost',
+                'Implementation-Title': 'My Project',
+                'Implementation-Version': '0.1'
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
