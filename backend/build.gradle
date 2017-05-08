@@ -1,16 +1,22 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'application'
+apply plugin: 'kotlin'
 
 group = 'groupId'
 version = '1.0-SNAPSHOT'
 
 description = """"""
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
-mainClassName = "MainKt"
+mainClassName = 'org.jetbrains.ktor.jetty.DevelopmentHost'
+
+sourceSets {
+    main.kotlin.srcDirs += 'src'
+    main.resources.srcDirs += "resources"
+}
 
 repositories {
         
@@ -21,7 +27,7 @@ repositories {
 dependencies {
     compile group: 'org.jsoup', name: 'jsoup', version:'1.10.2'
     compile group: 'org.jetbrains.ktor', name: 'ktor-core', version:'0.3.2'
-    compile group: 'org.jetbrains.ktor', name: 'ktor-netty', version:'0.3.2'
+    compile group: 'org.jetbrains.ktor', name: 'ktor-jetty', version:'0.3.2'
     compile group: 'org.jetbrains.ktor', name: 'ktor-html-builder', version:'0.3.2'
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.6.1'
     compile group: 'org.slf4j', name: 'slf4j-simple', version:'1.6.1'
