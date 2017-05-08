@@ -28,3 +28,14 @@ subprojects {
         maven { url "https://dl.bintray.com/kotlin/squash" }
     }
 }
+
+
+defaultTasks 'run'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.3"
+}
+
+task stage {
+    dependsOn 'installDist'
+}
