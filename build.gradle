@@ -37,5 +37,5 @@ task wrapper(type: Wrapper) {
 }
 
 task stage {
-    dependsOn 'installDist'
+    dependsOn ':backend:installDist'
 }
