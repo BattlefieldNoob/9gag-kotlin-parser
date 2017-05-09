@@ -21,7 +21,7 @@ import java.io.File
 
 fun Application.main(){
     val parser=NineGagParser()
-    val file = File("public")
+    val file = File("backend/resources/public")
     println(file.absolutePath)
 
     install(DefaultHeaders)

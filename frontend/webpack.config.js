@@ -7,7 +7,7 @@ var config = {
     "context": path.resolve('build/js'),
      entry: "frontend",
     "output": {
-         path: path.resolve('../../public'),
+         path: path.resolve('../../backend/resources/public'),
         "filename": "frontend.bundle.js",
         "chunkFilename": "[id].bundle.js",
         "publicPath": "/frontend/"
