@@ -50,3 +50,5 @@ jar {
         }
     }
 }
+
+installDist.mustRunAfter ':frontend:build'

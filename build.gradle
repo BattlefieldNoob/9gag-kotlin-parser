@@ -31,6 +31,4 @@ subprojects {
 
 defaultTasks 'run'
 
-task stage {
-    dependsOn ':backend:installDist'
-}
+task stage(dependsOn: [':frontend:build', ':backend:installDist'])

@@ -58,3 +58,5 @@ fabric.properties
 target/classes/
 
 \.DS_Store
+
+backend/resources/public/
