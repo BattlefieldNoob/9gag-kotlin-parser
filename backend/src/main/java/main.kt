@@ -3,17 +3,12 @@ import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.call
 import org.jetbrains.ktor.application.install
 import org.jetbrains.ktor.content.files
-import org.jetbrains.ktor.content.serveFileSystem
 import org.jetbrains.ktor.content.static
 import org.jetbrains.ktor.features.DefaultHeaders
-import org.jetbrains.ktor.host.ApplicationHostEnvironment
-import org.jetbrains.ktor.host.ApplicationHostEnvironmentBuilder
-import org.jsoup.Jsoup
-import org.jetbrains.ktor.host.embeddedServer
 import org.jetbrains.ktor.html.respondHtmlTemplate
 import org.jetbrains.ktor.http.ContentType
 import org.jetbrains.ktor.http.HttpStatusCode
-import org.jetbrains.ktor.jetty.JettyApplicationHost
+import org.jsoup.Jsoup
 import org.jetbrains.ktor.response.respondText
 import org.jetbrains.ktor.routing.get
 import org.jetbrains.ktor.routing.routing
@@ -35,12 +30,12 @@ fun Application.main(){
             val section=call.parameters["section"]
             val id=call.parameters["nextPageId"]
             val request=parser.getPosts(10,id);
-            val json=Gson().toJson(request)
+            val json= Gson().toJson(request)
             call.respondText(json, ContentType.Application.Json)
         }
 
         get("/"){
-            call.respondHtmlTemplate(IndexPage(), HttpStatusCode.OK){
+           call.respondHtmlTemplate(IndexPage(), HttpStatusCode.OK){
 
             }
         }
